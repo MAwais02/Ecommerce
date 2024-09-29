@@ -1,0 +1,52 @@
+footer{
+    margin-top: 10vmax;
+    padding: 2vmax;
+    background-color: rgb(34, 33, 33);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.leftfooter{
+    width: 20%;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+.leftfooter > p {
+    text-align: center;
+}
+.leftfooter > img {
+    width: 10vmax;
+    margin: 1vmax;
+    cursor: pointer;
+}
+.middlefooter{
+    width: 60%;
+
+    text-align: center;
+}
+.middlefooter > h1 {
+    font-size: 4vmax;
+    color: crimson;
+}
+
+.middlefooter > p {
+    max-width: 60%;
+    margin: 1vmax auto;
+}
+.rightfooter{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rightfooter > h4 {
+    font-size: 1.4vmax;
+    text-decoration: underline;
+}
+.rightfooter > a {
+    text-decoration: none;
+    font-size: 1.3vmax;
+    color: white;
+}
