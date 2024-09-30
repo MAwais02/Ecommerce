@@ -1,7 +1,6 @@
 const app = require("./app");
 const dotenv = require("dotenv");
 
-
 // handling uncaught exceptions
 
 process.on("uncaughtException" , (err)=>{
