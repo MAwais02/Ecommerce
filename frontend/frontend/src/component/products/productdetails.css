@@ -1,0 +1,197 @@
+.productdetail {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto; 
+    gap: 20px; 
+    padding: 40px;
+}
+
+.carousel-container {
+    flex: 1; 
+    max-width: 500px;
+    padding: 30px;
+}
+
+.carosalimage {
+    width: 100%; 
+    height: auto; 
+}
+
+.textouter {
+    flex: 1; 
+    padding: 20px; 
+    border-radius: 8px; 
+    max-width: 600px; 
+    margin: 20px 100px; 
+}
+
+.text-container1 {
+    margin-bottom: 15px;
+}
+
+.text-container1 h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.text-container1 p {
+    font-size: 16px;
+    color: #666;
+}
+
+.text-container2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    
+    border-bottom: solid gray 1px;
+    border-top: solid gray 1px;
+    padding: 10px;
+    
+}
+
+.text-container2 span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+.text-cont-3 {
+    margin-bottom: 15px;
+}
+
+.text-cont-3 h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.text-cont-3-1 {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.text-cont-3-1-1 {
+    display: flex;
+    align-items: center;
+}
+
+.text-cont-3-1-1 button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.text-cont-3-1-1 input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.text-cont-3-1 button {
+    margin: 3px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.text-cont-3 > p{
+    border-bottom: solid gray 1px;
+    border-top: solid gray 1px;
+    padding: 10px;
+}
+.text-cont-4 {
+    margin-bottom: 15px;
+}
+
+.text-cont-4 p {
+    margin: 0;
+    color: #333;
+}
+
+.redcolor {
+    color: red;
+}
+
+.greencolor {
+    color: green;
+}
+
+.submitreview {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .productdetail {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .carousel-container,
+    .textouter {
+        max-width: 100%; 
+        margin: 0; 
+    }
+
+    .carosalimage {
+        max-height: 300px; 
+    }
+
+    .textouter {
+        padding: 10px; 
+    }
+
+    .text-container1 h2 {
+        font-size: 20px; 
+    }
+
+    .text-cont-3 h1 {
+        font-size: 24px; 
+    }
+
+    .text-cont-3-1 button {
+        padding: 8px 15px; 
+    }
+
+    .submitreview {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carosalimage {
+        max-height: 200px; 
+    }
+
+    .text-container1 h2 {
+        font-size: 18px; 
+    }
+
+    .text-cont-3 h1 {
+        font-size: 22px; 
+    }
+
+    .text-container2 span {
+        font-size: 12px; 
+    }
+
+    .text-cont-3-1-1 input {
+        width: 40px; 
+    }
+
+    .text-cont-3-1-1 button {
+        padding: 5px;
+    }
+
+    .text-cont-3-1 button {
+        padding: 5px 15px;
+    }
+}

@@ -9,6 +9,7 @@ const Image = {
 };
 const ParentComponent = ({product}) => {
     const [productid , setproductid] = useRecoilState(productIDAtom);
+
     const options = {
         edit : false,
         color : "rgba(20,20,20,0.1)",
@@ -19,7 +20,7 @@ const ParentComponent = ({product}) => {
     }
     return (
         <div className="hiverbox">
-            <Link onClick={setproductid(product._id)} className="productcard" to={`/product/${product._id}`}>
+            <Link onClick ={()=> setproductid(product._id)} className="productcard" to={`/product/${product._id}`}>
                 <img src={Image.url} alt={product.name}/>
                 <p>{product.name}</p>
 
