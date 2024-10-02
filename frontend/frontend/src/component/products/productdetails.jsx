@@ -3,7 +3,7 @@ import Carousel from "react-material-ui-carousel";
 import "./productdetails.css";
 import { fetchsingledataproduct } from "../../statemanagment/state";
 import { useRecoilValueLoadable } from "recoil"; // Import Loadable
-
+import ReviewCard from "./ReviewCard.jsx"
 import ReactStars from "react-rating-stars-component"
 const ProductDetails = () => {
     console.log("Came into product details");
@@ -102,6 +102,19 @@ const ProductDetails = () => {
                     <button className="submitreview">Submit review</button>
                 </div>
             </div>
+
+            <h1 className="reviewHeading">Reviews</h1>
+
+            {data.reviews && data.reviews[0] ? (<div className="reviews"> 
+                {
+                    data.reviews && data.reviews.map((review) => {
+                        <ReviewCard review={review} />
+                    })
+                }
+            </div>
+            ) : 
+                (<p className="noreview">No reviews Yet</p>)
+            }
         </>
     );
 }
