@@ -195,3 +195,58 @@
         padding: 5px 15px;
     }
 }
+
+  
+  .reviewcard {
+    flex: none;
+    box-shadow: 0 0 5px rgb(0, 0, 0 , 0.226);
+    border: 1px solid gray;
+    width: 30vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vmax;
+    margin: 1vmax;
+  }
+  
+  .reviewcard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .reviewcard img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  .reviewcard p {
+    color: rgba(0, 0, 0, 0.836);
+    font: 600 0.9vmax;
+  }
+
+  .reviewcard span {
+    color: rgba(0, 0, 0, 0.445);
+    font: 300 0.8vmax;
+  }
+  .reviews{
+    display: flex;
+    overflow: auto;
+  }
+  .reviewHeading {
+    color: #333;
+    font: 500;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding: 1vmax;
+    width: 20vmax;
+    margin: auto;
+    margin-bottom: 4vmax;
+  }
+  
+  .noreview {
+    text-align: center;
+    color: #555;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  

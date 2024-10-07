@@ -5,16 +5,22 @@ const ApiFeatures = require("../utils/APIFeatures");
 const SendToken = require("../utils/token");
 const sendEmail = require("../utils/sendEmail.js");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary")
 
 exports.registerUser = catchasyncError( async (req , res , next) => {
 
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar , {
+        folder:"avatars",
+        width: 150,
+        crop: "scale" ,
+    });
     const {name , email , password}  = req.body;
 
     const user = await User.create({
         name , email , password,
         avatar : {
-            public_id : "THis is a sample Id",
-            url : "Tempurl",
+            public_id :myCloud.public_id,
+            url : myCloud.secure_url,
         }
     })
 
@@ -123,7 +129,7 @@ exports.resetPassword = catchasyncError(async (req , res , next) => {
 exports.getUserDetails = catchasyncError(async (req , res , next) => {
 
     const user = await User.findById(req.user.id);
-
+    
     res.status(200).json({
         success : true ,
         user,

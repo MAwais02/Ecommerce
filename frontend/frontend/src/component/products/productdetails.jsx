@@ -6,11 +6,9 @@ import { useRecoilValueLoadable } from "recoil"; // Import Loadable
 import ReviewCard from "./ReviewCard.jsx"
 import ReactStars from "react-rating-stars-component"
 const ProductDetails = () => {
+    
     console.log("Came into product details");
-
-
     const loadableData = useRecoilValueLoadable(fetchsingledataproduct);
-
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -39,12 +37,12 @@ const ProductDetails = () => {
     //console.log(url);
 
     const options = {
-        edit : false,
-        color : "rgba(20,20,20,0.1)",
-        activeColor : "tomato",
-        value : data.ratings, 
-        isHalf : true,
-        size : window.innerWidth < 600 ? 20 : 25,
+        edit: false,
+        color: "rgba(20,20,20,0.1)",
+        activeColor: "tomato",
+        value: data.ratings,
+        isHalf: true,
+        size: window.innerWidth < 600 ? 20 : 25,
     }
     return (
         <>
@@ -104,17 +102,18 @@ const ProductDetails = () => {
             </div>
 
             <h1 className="reviewHeading">Reviews</h1>
+            {data.reviews && data.reviews[0] ? (
+                <div className="reviews">
+                    {
+                        data.reviews && data.reviews.map((review) => {
+                            return <ReviewCard key={review.id} review={review} />;
+                        })
+                    }
+                </div>
+            ) : (
+                <p className="noreview">No reviews yet</p>
+            )}
 
-            {data.reviews && data.reviews[0] ? (<div className="reviews"> 
-                {
-                    data.reviews && data.reviews.map((review) => {
-                        <ReviewCard review={review} />
-                    })
-                }
-            </div>
-            ) : 
-                (<p className="noreview">No reviews Yet</p>)
-            }
         </>
     );
 }

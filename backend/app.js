@@ -4,11 +4,14 @@ const ErrorMiddleWare = require("./middleware/error")
 const order = require("./routes/orderroute")
 const app = express();
 const cors = require("cors");
+const bodyparser = require("body-parser");
+const fileupload = require("express-fileupload");
 
 app.use(cors());
 app.use(express.json());
-
-app.use(cookieparser()); 
+app.use(cookieparser());
+app.use(bodyparser.urlencoded({extended: true})) ;
+app.use(fileupload());
 //Route imports
 
 const product = require("./routes/productroute");
