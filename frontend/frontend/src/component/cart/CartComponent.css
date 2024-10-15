@@ -1,0 +1,67 @@
+.cartpage {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .cartheader {
+    display: flex;
+    justify-content:space-between;  /* Ensures equal spacing between the columns */
+    padding: 15px 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #ddd;
+}
+
+.cartheader p {
+    flex: 1; /* Each <p> will take equal space */
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+}
+
+  .carttotal {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .checkoutbtn {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkoutbtn:hover {
+    background-color: #45a049;
+  }
+  
+  .cartitem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cartitem p {
+    width: 33%;
+    text-align: center;
+  }
+  

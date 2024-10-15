@@ -3,14 +3,15 @@ import "./AllProducts.css"
 import ParentComponent from "../layout/Home/Product"
 import { useState } from "react";
 import { useEffect } from "react";
-import { fetchbackenddata , PriceAtom , Category , Ratings , ProductKeyword } from "../../statemanagment/state"
+import { fetchbackenddata, PriceAtom, Category, Ratings, ProductKeyword } from "../../statemanagment/state"
 import { useRecoilState, useRecoilValue, useRecoilValueLoadable } from "recoil";
 import { Page } from "../../statemanagment/state"
 import Pagination from "react-js-pagination"
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
-
-const categories =[
+import { Userprofile } from "../../statemanagment/UserState";
+import Loader from "../layout/Loader/loader";
+const categories = [
     "laptop",
     "Footwear",
     "Bottom",
@@ -20,15 +21,17 @@ const categories =[
     "SmartPhones",
 ]
 const AllProducts = () => {
+    const [userprofile, setUserprofile] = useRecoilState(Userprofile);
+    console.log("User in Product is " + userprofile);
     const loadableData = useRecoilValueLoadable(fetchbackenddata);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [page, setpage] = useRecoilState(Page);
-    const [Price , setPrice] = useRecoilState(PriceAtom);
-    const [category , setCategory] = useRecoilState(Category);
+    const [Price, setPrice] = useRecoilState(PriceAtom);
+    const [category, setCategory] = useRecoilState(Category);
     const keyword = useRecoilValue(ProductKeyword);
 
-    const [rating , setRating] = useRecoilState(Ratings);
+    const [rating, setRating] = useRecoilState(Ratings);
 
     const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
@@ -48,17 +51,17 @@ const AllProducts = () => {
         return () => {
             isMounted = false;
         };
-    }, [loadableData , Price , currentPage , category]);
+    }, [loadableData, Price, currentPage, category, userprofile]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loader />;
     }
     if (loadableData.state === "hasError") {
         return <div>Error loading product details.</div>;
     }
     // Get the actual data
     const AllProducts2 = loadableData.contents.products;
-    //console.log('AllProducts2:', AllProducts2);
+    console.log('AllProducts2:', AllProducts2);
     //console.log('Type of AllProducts2:', Array.isArray(AllProducts2));
     const resultPerPage = loadableData.contents.ProductsperPage;
     const productsCount = loadableData.contents.CountProduct;
@@ -74,35 +77,43 @@ const AllProducts = () => {
                 return <ParentComponent key={p._id} product={p} />
             })}
         </div>
-        {<div className="filterbox">
-            <Typography>Price</Typography>
+        <div className="filterbox">
+            <Typography variant="h6" className="filter-title">Price</Typography>
+            <Slider
+                value={Price}
+                onChange={priceHandler}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                min={0}
+                max={25000}
+                className="price-slider"
+            />
+
+            <Typography variant="h6" className="filter-title">Categories</Typography>
+            <ul className="categoryBox">
+                {categories.map((category) => (
+                    <li
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                    >
+                        {category}
+                    </li>
+                ))}
+            </ul>
+
+            <fieldset className="rating-fieldset">
+                <Typography component="legend" className="filter-title">Rating Above</Typography>
                 <Slider
-                    value={Price}
-                    onChange={priceHandler}
-                    valueLabelDisplay="auto"
-                    aria-labelledby="range-slider"
+                    value={rating}
+                    onChange={(e, newRating) => setRating(newRating)}
+                    aria-labelledby="auto"
                     min={0}
-                    max={25000}
+                    max={5}
+                    className="rating-slider"
                 />
-
-                <Typography>Categerios</Typography>
-                <ul className="categoryBox">
-                    {categories.map((category)=> (
-                        <li className="category-link" key={category} onClick={()=> setCategory(category)}>
-                            {category}
-                        </li>
-                        ))}
-                </ul>
-
-                <fieldset>
-                    <Typography component="legend">Rating Above</Typography>
-                    <Slider value={rating} onChange={(e , newRating)=>{
-                        setRating(newRating);
-                    }} aria-labelledby="auto"
-                    min={0}
-                    max={5}/>
-                </fieldset>
-        </div>}
+            </fieldset>
+        </div>
         {
             resultPerPage < productsCount && (
                 <div className="paginationBox">

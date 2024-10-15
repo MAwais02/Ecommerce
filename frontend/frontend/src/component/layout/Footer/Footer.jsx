@@ -1,33 +1,34 @@
 import React from "react";
 
-import playstore from '../../../assets/playstore.png'
-import AppStore from "../../../assets/AppStore.png"
+import playstore from '../../../assets/playstore.png';
+import AppStore from "../../../assets/AppStore.png";
 
-import "./footer.css"
-export const Footer = () =>{
+import "./footer.css";
+
+export const Footer = () => {
     return (
-        <>
-            <footer id="footer">
-                <div className="leftfooter">
-                    <h4>Download our app</h4>
-                    <p>Download App for andriod and ios mobile phone</p>
-                    <img src={playstore} alt="playstore" />
-                    <img src={AppStore} alt="Appstore" />
+        <footer id="footer">
+            <div className="leftFooter">
+                <h4>Download Our App</h4>
+                <p>Get the app for Android and iOS devices.</p>
+                <div className="storeIcons">
+                    <img src={playstore} alt="Playstore" />
+                    <img src={AppStore} alt="App Store" />
                 </div>
-                <div className="middlefooter">
-                    <h1>ECOMMERCE</h1>
-                    <p>High Quality is our first priority</p>
+            </div>
 
-                    <p>CopyRight 2021 &copy; DiSparta</p>
-                </div>
-                <div className="rightfooter">
-                    <h4>Follow us</h4>
-                    <a href="">Instagram</a>
-                    <a href="">Youtube</a>
-                    <a href="">Facebook</a>
-                </div>
+            <div className="middleFooter">
+                <h1>ECOMMERCE</h1>
+                <p>Your satisfaction is our priority.</p>
+                <p>&copy; 2021 DiSparta - All rights reserved</p>
+            </div>
 
-            </footer>
-        </>
-    )
-}
+            <div className="rightFooter">
+                <h4>Follow Us</h4>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Facebook</a>
+            </div>
+        </footer>
+    );
+};

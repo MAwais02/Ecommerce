@@ -1,0 +1,127 @@
+/* UserProfile.css */
+body {
+    background-color: #f4f7fa; /* Soft background color */
+    font-family: 'Arial', sans-serif; /* Clean font style */
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    background-color: #ffffff; /* White background for the profile */
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Limit maximum width */
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Card background */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.profile-avatar-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid #007bff; /* Highlight border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info-section {
+    flex: 2;
+    margin-left: 20px;
+}
+
+.profile-name {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333; /* Dark color for contrast */
+}
+
+.profile-email {
+    margin-bottom: 20px;
+    color: #555; /* Slightly lighter color */
+}
+
+.update-button {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+.update-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.update-profile-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px; /* Spacing above form */
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Dark label color */
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff; /* Change border color on focus */
+}
+
+.avatar-preview {
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.save-button {
+    background-color: #28a745; /* Success color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

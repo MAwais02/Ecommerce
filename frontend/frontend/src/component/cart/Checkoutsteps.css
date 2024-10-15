@@ -1,0 +1,20 @@
+.stepper {
+    background-color: #f7f7f7; /* Light background for the stepper */
+    padding: 16px; /* Add some padding around the stepper */
+    border-radius: 8px; /* Rounded corners for the stepper */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 100px;
+}
+
+.stepLabel {
+    font-weight: 600; /* Bold label text */
+    color: #333; /* Darker text color */
+}
+
+.activeStep {
+    color: #1976d2; /* Color for active step */
+}
+
+.completed {
+    color: #4caf50; /* Color for completed steps */
+}

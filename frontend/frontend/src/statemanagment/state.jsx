@@ -1,4 +1,8 @@
 import { atom, selector } from "recoil";
+import { recoilPersist } from 'recoil-persist'; // localStoarage session 
+
+const { persistAtom } = recoilPersist();
+
 
 /////////////-----------Getting All product state---------------/////////////
 
@@ -40,26 +44,29 @@ export const fetchbackenddata = selector({
             let response;
             
             if(cat != ""){
-                response = await fetch(`http://localhost:4000/api/v1/products?keyword=${keyword}&page=${page}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${cat}&ratings[gte]=${ratings}`);
+                response =  await fetch(`http://localhost:4000/api/v1/products?keyword=${keyword}&page=${page}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${cat}&ratings[gte]=${ratings}`);
             }
             else{
                 response = await fetch(`http://localhost:4000/api/v1/products?keyword=${keyword}&page=${page}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`)
             }
             const data = await response.json();
-            console.log("Data is " + data);
+
+            console.log("Data is " + (data));
             return data;
             
         }
         catch(error){
             throw error;
         }
-    }
+    },
+    effects: [persistAtom],
 })
 //////////////////////------Getting single product details----------------------////
 export const productIDAtom = atom(
     {
         key : "productid",
         default : null,
+        effects: [persistAtom],
     }
 )
 export const fetchsingledataproduct = selector({
@@ -82,7 +89,8 @@ export const fetchsingledataproduct = selector({
             console.log("Error while fetching the data");
             throw error
         }
-    }
+    },
+    effects: [persistAtom],
 })
 ////////////-----------Product Keyword State---------------------
 export const GetProductWithKeywordSearch = selector({
@@ -110,7 +118,8 @@ export const GetProductWithKeywordSearch = selector({
         catch(error){
             throw error;
         }
-    }
+    },
+    effects: [persistAtom],
 })
 ///////////////////LOAD USER//////////////////////
 export const LoadUser = selector({
@@ -122,5 +131,6 @@ export const LoadUser = selector({
         catch{
             
         }
-    }
+    },
+    effects: [persistAtom],
 })

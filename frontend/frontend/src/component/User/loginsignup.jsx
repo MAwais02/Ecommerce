@@ -1,24 +1,26 @@
-// src/components/Auth/LoginSignup.js
-
 import React, { useState, useEffect } from 'react';
-import './LoginSignUp.css'
+import './LoginSignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import FaceIcon from '@mui/icons-material/Face';
 import axios from 'axios';
+import Cookies from 'js-cookie';
+import {jwtDecode} from 'jwt-decode'
+import { Userprofile } from '../../statemanagment/UserState';
+import { useRecoilState, useRecoilValue } from 'recoil';
+
 
 const LoginSignup = () => {
+  const [userprofile , setUserprofile] = useRecoilState(Userprofile);
   const navigate = useNavigate();
-
-  // State for toggling between Login and Signup
   const [isLogin, setIsLogin] = useState(true);
 
-  // State for Login Form
+  // Login state
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
 
-  // State for Signup Form
+  // Signup state
   const [signupData, setSignupData] = useState({
     name: '',
     email: '',
@@ -26,20 +28,41 @@ const LoginSignup = () => {
   });
   const { name, email, password } = signupData;
 
-  // Avatar State
   const [avatar, setAvatar] = useState('/Profile.png');
   const [avatarPreview, setAvatarPreview] = useState('/Profile.png');
-
-  // Error State
   const [error, setError] = useState(null);
 
-  // Effect to handle redirection on successful authentication
+  // Check if token exists in cookies and redirect if logged in
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = Cookies.get('token');
     if (token) {
-      navigate('/home');
+      const decodedToken = jwtDecode(token);
+      console.log("Token is " + JSON.stringify(decodedToken.id)); // Log the user id
+
+      // Define and call the async function
+      var res;
+      const fetchUserData = async () => {
+        try {
+          const data = await axios.get('http://localhost:4000/api/v1/me', {
+            withCredentials: true, // Ensure cookies are sent with the request
+        });
+        // console.log("Your user data is " + JSON.stringify(data.data.user)); // this is giving the user details
+        setUserprofile(data.data.user); // User Profile data is now setup ThankGod Takes too much time
+
+        //console.log("UserProfile data is " + JSON.stringify(userprofile));
+
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      fetchUserData(); 
+
+      navigate('/home'); 
     }
   }, [navigate]);
+
+
 
   // Handle Login Form Submission
   const handleLoginSubmit = async (e) => {
@@ -55,9 +78,13 @@ const LoginSignup = () => {
         config
       );
 
-      localStorage.setItem('token', data.token);
+      // Store token in cookie
+      Cookies.set('token', data.token, { expires: 7 }); // Token expires in 7 days
+
+      console.log("Data is " + JSON.stringify(data));
+      setUserprofile(data.user); // store user state
       alert('Logged in successfully');
-      navigate('/dashboard');
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
       alert(err.response?.data?.message || 'Login failed');
@@ -84,7 +111,12 @@ const LoginSignup = () => {
         config
       );
 
-      localStorage.setItem('token', data.token);
+      // Store token in cookie
+      Cookies.set('token', data.token, { expires: 7 }); // Token expires in 7 days
+
+      setUserprofile(data.user); // store user state
+
+
       alert('Registered successfully');
       navigate('/home');
     } catch (err) {
@@ -99,7 +131,7 @@ const LoginSignup = () => {
       const reader = new FileReader();
 
       reader.onload = () => {
-        if (reader.readyState === 2) { // 2 means done 
+        if (reader.readyState === 2) { // 2 means done
           setAvatarPreview(reader.result);
           setAvatar(reader.result);
         }

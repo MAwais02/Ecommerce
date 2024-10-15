@@ -1,0 +1,116 @@
+.confirmOrderPage {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px; /* Slightly reduced padding for overall layout */
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.confirmshippingArea,
+.confirmCartItems,
+.orderSummary {
+    flex: 0.48; /* Adjusted for better spacing */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px; /* Reduced padding for tighter layout */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 15px; /* Space between sections */
+}
+
+.confirmshippingArea:hover,
+.confirmCartItems:hover,
+.orderSummary:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a line between sections */
+.confirmshippingArea::after,
+.confirmCartItems::after,
+.orderSummary::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #e0e0e0; /* Color of the line */
+    margin: 10px 0; /* Spacing around the line */
+}
+
+.confirmshippingAreaBox {
+    margin-top: 10px; /* Reduced margin for compactness */
+}
+
+.confirmshippingArea p {
+    font-weight: bold;
+    color: #333;
+}
+
+.confirmCartItems {
+    margin-top: 15px; /* Reduced margin for compactness */
+}
+
+.confirmCartItemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap between items */
+}
+
+.confirmCartItems img {
+    width: 70px; /* Adjusted for better sizing */
+    height: 70px;
+    border-radius: 5px;
+}
+
+.confirmCartItems a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.confirmCartItems a:hover {
+    color: #0056b3; /* Darker shade on hover for better feedback */
+}
+
+.confirmCartItems span {
+    margin-left: 5px; /* Reduced margin for tighter layout */
+}
+
+.orderSummary {
+    margin-top: 15px; /* Reduced margin for compactness */
+}
+
+.orderSummaryTotal {
+    font-weight: bold;
+    font-size: 1.2em; /* Slightly reduced size for consistency */
+    margin-top: 10px;
+}
+
+button {
+    background-color: #28a745; /* Green color for better visibility */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; /* Adjusted padding for a tighter button */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width for better interaction */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+@media (max-width: 768px) {
+    .confirmOrderPage {
+        flex-direction: column;
+    }
+
+    .confirmshippingArea,
+    .confirmCartItems,
+    .orderSummary {
+        margin-right: 0;
+        margin-bottom: 15px; /* Reduced bottom margin for tighter stacking */
+    }
+}

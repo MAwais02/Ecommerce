@@ -10,10 +10,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Userprofile } from "../../../statemanagment/UserState";
+import Cookies from 'js-cookie'
 import axios from "axios";
+
+const cartItems = [{
+  "Order": 10,
+},]
 
 const UserOptions = () => {
   const [userprofile, setUserprofile] = useRecoilState(Userprofile);
+
+  console.log("User Profle is " + JSON.stringify(userprofile));
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -57,14 +64,20 @@ const UserOptions = () => {
   }
 
   function logoutUser() {
-    // Dispatch logout action or perform logout logic
-    axios.post("/api/logout").then(() => {
-      setUserprofile(null);
-      // Use an alternative to alert.success, like a toast notification
-      console.log("Logout Successfully");
-      navigate("/login");
-    });
+    console.log("Came here in logout");
+
+    axios.get("http://localhost:4000/api/v1/logout")
+      .then(() => {
+        Cookies.remove('token');
+        setUserprofile(null);
+        console.log("Logout Successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error); // Log any error that occurs
+      });
   }
+
 
   return (
     <Fragment>

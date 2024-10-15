@@ -1,0 +1,76 @@
+.ordersContainer {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+}
+
+.orderList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.orderItem {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.orderHeader {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.shippingInfo,
+.paymentInfo,
+.orderItems,
+.orderSummary {
+    margin: 10px 0;
+}
+
+.orderItem p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.orderItem strong {
+    color: #333;
+}
+
+.orderItems ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.orderItems li {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.orderActions {
+    margin-top: 20px;
+}
+
+.MuiButton-containedPrimary {
+    background-color: #007bff;
+    color: white;
+}
+
+.MuiButton-containedPrimary:hover {
+    background-color: #0056b3;
+}
+
+.orderDivider {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}

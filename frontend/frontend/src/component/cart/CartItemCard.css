@@ -1,0 +1,90 @@
+.cartitemcard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.cartitemcard:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.item-image {
+    flex: 0.5;
+}
+
+.item-image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-details {
+    flex: 2;
+    padding-left: 20px;
+}
+
+.item-quantity, .item-price {
+    flex: 1;
+    text-align: center;
+}
+
+.remove-btn {
+    flex: 1;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Aligns the cart header with the additional Remove column */
+.cartheader {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    font-weight: bold;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #ddd;
+}
+
+.cartheader p {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Align image, name, quantity, price, and remove button */
+.cartheader p:nth-child(1), .cartitemcard .item-image {
+    flex: 0.5;
+}
+
+.cartheader p:nth-child(2), .cartitemcard .item-details {
+    flex: 2;
+}
+
+.cartheader p:nth-child(3), .cartitemcard .item-quantity {
+    flex: 1;
+}
+
+.cartheader p:nth-child(4), .cartitemcard .item-price {
+    flex: 1;
+}
+
+.cartheader p:nth-child(5) {
+    flex: 1; /* Space for the Remove button */
+}

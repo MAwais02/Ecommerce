@@ -18,7 +18,16 @@ exports.createProduct = catchasyncError( async (req , res , next) => {
 )
 // Get all products Admin
 
+exports.getAdminProducts = catchasyncError( async (req , res)=> {
 
+    const products = await Product.find();
+    res.status(200).json({
+        success : true,
+        products ,
+    })
+}
+)
+// Get all producsts
 exports.getAllProducts = catchasyncError( async (req , res)=> {
 
         const ProductsperPage = 8;
@@ -27,8 +36,7 @@ exports.getAllProducts = catchasyncError( async (req , res)=> {
         console.log("Hi there " + req.query.keyword);
         const apiFeatures = new ApiFeatures(Product.find() , req.query)
         .search()
-        .filter()
-        .pagaination(ProductsperPage);
+        .filter().pagaination(ProductsperPage);
 
         const products = await apiFeatures.query;
         res.status(200).json({
@@ -107,8 +115,10 @@ exports.DeleteProduct = catchasyncError(
 exports.CreateProductReview = catchasyncError(async (req, res , next)=>{
 
     const {rating , comment , productid} =  req.body;
+    
+    console.log("User iD in review" + req.user.id )
     const review = {
-        user : req.user._id,
+        user : req.user.id,
         name : req.user.name,
         rating:Number(rating),
         Comment:comment,
@@ -116,10 +126,10 @@ exports.CreateProductReview = catchasyncError(async (req, res , next)=>{
 
     const product = await Product.findById(productid);
 
-    const isReviewed = product.reviews.find((rev)=>rev.user.toString() === req.user._id.tostring())
+    const isReviewed = product.reviews.find((rev)=>rev.user === req.user.id)
     if(isReviewed){
         product.reviews.forEach(rev =>{
-            if(rev.user.toString() === req.user._id.tostring())
+            if(rev.user.toString() === req.user.id.tostring())
             {
                 rev.rating = rating;
                 rev.Comment=  comment;

@@ -1,7 +1,7 @@
 import React, { Fragment, Suspense } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component"
-import { Loader } from "../Loader/loader";
+import  Loader  from "../Loader/loader";
 import { productIDAtom } from "../../../statemanagment/state.jsx"; // setting product if for future use
 import { useRecoilState } from "recoil";
 const Image = {
@@ -21,14 +21,14 @@ const ParentComponent = ({product}) => {
     return (
         <div className="hiverbox">
             <Link onClick ={()=> setproductid(product._id)} className="productcard" to={`/product/${product._id}`}>
-                <img src={Image.url} alt={product.name}/>
+                <img src={product.images[0].url} alt={product.name}/>
                 <p>{product.name}</p>
 
                 <div>
                     <ReactStars {...options}/>
                     <span> ({product.numOfreviews})</span>
                 </div>
-                <span>${product.price}</span>
+                <span>₹{product.price}</span>
             </Link>
         </div>
     )

@@ -1,73 +1,119 @@
-.PPHeading{
-    margin: 2vmax auto;
-    width: 15vw;
-    border-bottom: 1px solid rgba(0, 0, 0,0.171);
-    padding: 2vmax;
-    color: rgba(0, 0, 0, 0.678);
-    font: 1000 1.5vmax;
-    font-weight: bold;
-    text-align: center;
+.PPHeading {
+  margin: 2vmax auto;
+  width: 15vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 2vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font: 1000 1.5vmax;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
 }
-.pproducts{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 5vmax;
-    justify-content: center;
-}
-.paginationBox {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .page-item {
-    display: inline-block;
-    margin: 0 5px; 
-  }
-  
-  .page-link {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f9fa; 
-    color: #007bff; 
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .page-link:hover {
-    background-color: #007bff; 
-    color: white; 
-  }
-  
-  .pageItemActive .page-link {
-    background-color: #007bff; 
-    color: white; 
-    border-color: #007bff; 
-  }
-  
-  .pageLinkActive {
-    color: white !important; 
-  }
-  .filterbox{
-    width: 10vmax;
-    position: absolute;
-    top: 13vmax;
-    left: 4vmax;
-  }
-  .categoryBox{
-    padding: 0%;
-  }
-  .category-link{
 
-    list-style: none;
-    color: rgba(0, 0, 0, 0.678);
-    font:400 0.8vmax "Roboto";
-    margin: 0.4vmax;
-    cursor: pointer;
-    transition: all 0.5s;
-  }
-  .category-link:hover{
-    color: tomato;
-  }
+.pproducts {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 5vmax;
+  justify-content: center;
+}
+
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.page-link {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.page-link:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.pageItemActive .page-link {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pageLinkActive {
+  color: white !important;
+}
+
+.filterbox {
+  width: 12vmax;
+  position: absolute;
+  top: 10vmax;
+  left: 1vmax;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.678);
+  margin-bottom: 15px;
+}
+
+.price-slider,
+.rating-slider {
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+.categoryBox {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-link {
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.678);
+  font: 400 0.8vmax "Roboto";
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+.category-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.category-link:active {
+  background-color: #0056b3; /* Darker blue when clicked */
+}
+
+.rating-fieldset {
+  border: none;
+  margin-top: 20px;
+}
+
+.rating-fieldset legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
